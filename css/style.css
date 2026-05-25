@@ -1,0 +1,449 @@
+*{
+    margin: 0;
+    padding: 0; 
+}
+
+html{
+    min-height: 100%;
+    position: relative;
+}
+
+body{
+    background-image: url("../img/11165.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: fit-content;
+    /* position: relative; */
+    /* min-height: 100vh; */
+}
+
+header{
+    width: 100%;
+    min-height: 75px;
+    background-image: url("../img/worldLandscapes.png"), linear-gradient(rgba(240, 248, 255, 1), rgba(240, 248, 255, 0.5) 80%, rgba(240, 248, 255, 0));
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+header div{
+    display: flex;
+    align-items: center;
+    width: inherit;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.titleBox{
+    background-image: linear-gradient(rgba(240, 248, 255, 0.6), rgba(203, 232, 245, 0.4));
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.creditCaption{
+    height: fit-content;
+    width: fit-content;
+    padding-top: 0;
+}
+
+.creditCaption a{
+    color:black;
+    font-size: 11px;
+}
+
+h1 {
+    font-family: 'Ropa Sans', sans-serif;
+    text-align: center;
+    display: inline;
+    font-size: 28px;
+}
+
+h2{
+    font-family: 'Ropa Sans', sans-serif;
+    text-align: center;
+}
+
+h3{
+    font-family: 'Ropa Sans', sans-serif;
+    text-align: center;
+    padding-bottom: 5px;
+    font-size: 20px;
+}
+
+p{
+    font-family: 'Ropa Sans', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.faqAnswer p{
+    color: rgb(82, 82, 82);
+}
+
+.mainContentContainer{
+    position: relative;
+}
+
+.mainContentContainer{
+    /*                                header and footer size */
+    min-height: calc(max(500px, 100vh) - 75px - 55px);
+}
+
+.mainContent{
+    margin-left: auto;
+    margin-right: auto; 
+    margin-bottom: 10px;    
+    width: 100%;
+    vertical-align: top;
+    /* height: fit-content; */
+    min-height: 475px;
+    background-color:rgba(240, 248, 255, 0.8);
+}
+
+.homePageMainContent {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.aboutPageMainContent {
+    padding-bottom: 10px;
+}
+
+.aboutPageMainContent p, .faqPageMainContent p{
+    padding-left: 7px;
+    padding-right: 7px;
+}
+
+.aboutPageMainContent div{
+    padding-top: 15px;
+}
+
+.faqTitle{
+    padding-top: 5px;
+    margin-bottom: 5px;
+}
+
+.faqAnswer{
+    margin-bottom: 20px;
+    background-color: rgba(240, 248, 255, 0.8);
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.faqPageMainContent .rowBlock{
+    flex-direction: column;
+}
+
+.rowBlock{
+    display: flex;
+}  
+
+.leftItem{
+    margin-right: auto;
+    padding-left: 7px;
+    max-width: 170px;
+    flex: 1;
+}
+
+.rightItem{
+    margin-left: auto;
+    padding-right: 7px;
+    max-width: 170px;
+    text-align: right;
+    flex: 1;
+}
+
+.flagImage{
+    height: 45px;
+    object-fit: contain;
+    margin-left: auto; 
+    margin-right: auto; 
+    display: block;
+    margin-bottom: 5px;
+}
+
+.middleSelector{
+    align-self: flex-end;
+}
+
+#linkAlertText{
+    background-color: rgba(203, 232, 245, 0.6);
+    opacity: 0;
+    cursor: default;
+}
+
+#flipButton{
+    margin-bottom: 3px;
+}
+
+.middleSelector .buttonContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 5px;
+}
+
+.selectorContainer{
+    margin-left: auto; 
+    margin-right: auto;
+    width: fit-content;
+    padding-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.searchContainer {
+    margin-bottom: 4px;
+}
+
+.inputField{
+    width: 117px;
+    font-size: 14px;
+}
+
+button{
+    color: white;
+    background-color: rgb(65, 156, 189);
+    border-color: rgb(65, 156, 189);
+    border-style: solid;
+    border-radius: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    font-size: 14px;
+    transition: opacity 0.15s
+}
+
+button:hover{
+    opacity: 0.8;
+}
+
+button:active{
+    opacity: 0.5;
+}
+
+.defaultGroup1, .defaultGroup2, .errorGroup1, .errorGroup2 {
+    text-align: center;
+}   
+
+.centeredItem{
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 90%;
+}
+
+.currencyLoader{
+    width: 35px;
+}
+
+.countryLink{
+    color: black;
+    text-overflow: ellipsis;
+}
+
+footer{ 
+    /* height: fit-content; */
+    /* position: absolute; */
+    /* left: 0;
+    bottom: 0; */
+    width: 100%;
+    overflow: hidden;
+    background-image: linear-gradient(rgba(240, 248, 255,0), rgba(240, 248, 255, 1));
+}
+
+footer a{
+    color:black;
+}
+
+footer div a{
+    color:black;
+    font-size: small;
+}
+
+@media only screen and (min-width: 400px){
+    .mainContent{
+        min-height: 500px;
+    }
+
+    .flagImage{
+        height: 65px;
+    }
+}
+
+@media only screen and (min-width: 545px){
+    .mainContentContainer{
+        /*                                header and footer size */
+        min-height: calc(max(650px, 100vh) - 75px - 37px);
+    }
+
+    .mainContent{
+        /* content is now so wide that it shrinks vertically */
+        min-height: 455px;
+    }
+
+    .homePageMainContent {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .flagImage{
+        height: 85px;
+        margin-bottom: 8px;
+    }
+
+    .leftItem{
+        padding-left: 25px;
+        max-width: 250px;
+    }  
+    
+    .rightItem{
+        padding-right: 25px;
+        max-width: 250px;
+    }
+}
+
+@media only screen and (min-width: 750px){
+    header{
+        min-height: none;
+        height: 150px;
+    }
+
+    .titleBox{
+        background-image: none;
+    }
+
+    h1{
+        font-size: 50px;
+        background-image: linear-gradient(rgba(240, 248, 255, 0.6), rgba(203, 232, 245, 0.4));
+    }
+
+    h2{
+        font-size: 40px;
+    }
+
+    h3{
+        font-size: 22px;
+    }
+
+    p {
+        font-size: 20px;
+    }
+
+    .mainContentContainer{
+        /*                                header and footer size */
+        min-height: calc(max(675px, 100vh) - 150px - 37px);
+    }
+
+    .mainContent{
+        max-width: 1000px;
+        margin-bottom: 50px;
+    }
+
+    .homePageMainContent {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+    
+    .aboutPageMainContent p, .faqPageMainContent p{
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    .aboutPageMainContent div{
+        padding-top: 20px;
+    }
+
+    .faqTitle{
+        padding-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    .faqAnswer{
+        margin-bottom: 30px;
+    }
+    
+    .leftItem{
+        padding-left: 25px;
+        max-width: 450px;
+    }  
+    
+    .rightItem{
+        padding-right: 25px;
+        max-width: 450px;
+    }
+    
+    .flagImage{
+        height: 120px;
+        margin-bottom: 15px;
+    }
+    
+    .inputField{
+        width: 140px;
+        height: 25px;
+        font-size: 18px;
+    }
+    .selectorContainer{
+        flex-direction: row;
+    }
+
+    .searchContainer {
+        margin-bottom: 0;
+    }
+
+    .buttonContainer{
+        margin-left: 5px;
+    }
+    
+    button{
+        width: fit-content;
+        padding-left: 6px;
+        padding-right: 6px;
+        padding-top: 2px;
+        padding-bottom: 2px;
+        font-size: 18px;
+    }
+    
+    .firstTextRow{
+        margin-top: 5px;
+    }
+
+    footer a{
+        margin-left: 20px;
+    }
+    
+    footer div a{
+        margin-left: 20px;
+    }
+}
+
+@media only screen and (min-width: 1000px){
+     .mainContentContainer{
+        /*                                header and footer size */
+        min-height: calc(max(675px, 100vh) - 150px - 37px);
+    }
+
+    .flagImage{
+        height: 150px;
+        margin-bottom: 15px;
+    }
+
+    .inputField{
+        width: 180px;
+        font-size: 18px;
+    }
+
+    button{
+        width: fit-content;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-top: 3px;
+        padding-bottom: 3px;
+        font-size: 18px;
+    }
+}

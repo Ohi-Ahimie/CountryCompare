@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>CountryCompare</title>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="favicon.ico">
+        <link href="https://fonts.googleapis.com/css2?family=Ropa+Sans&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/style.css"/>
+    </head>
+    <body>
+        <header>
+            <div>
+                <div class="titleBox">
+                    <h1>CountryCompare</h1>
+                    <div class="creditCaption">
+                        <a href="http://www.freepik.com" target="_blank">Image by macrovector / Freepik</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="mainContentContainer homePageMainContentContainer">
+            <div class="mainContent homePageMainContent">
+                <div class="rowBlock flagAndSelectorContainer">
+                    <div class="selectorBox leftItem">
+                        <img class="flagImage" src="img/earth.png" alt="An illustration of the Earth." id="country1Flag">
+                        <div class="selectorContainer">
+                            <div class="searchContainer">
+                                <input class="inputField" type="text" placeholder="Enter a Country" id="country1Field"/>
+                            </div>
+                            <div class="buttonContainer">
+                                <button id="country1Search">search</button>
+                                <button id="country1Random">random</button> 
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="middleSelector centeredItem">
+                        <div class="buttonContainer">
+                            <p id="linkAlertText">Link Copied!</p>
+                            <button class="bothSelectedGroup" id="flipButton" hidden>flip</button>
+                            <button id="shareButton">share</button>
+                        </div>
+                    </div>
+                    
+                    <div class="selectorBox rightItem">
+                        <img class="flagImage" src="img/earth.png" alt="An illustration of the Earth." id="country2Flag"> 
+                        <div class="selectorContainer">
+                            <div class="searchContainer">
+                                <input class="inputField" type="text" placeholder="Enter a Country" id="country2Field"/>
+                            </div>
+                            <div class="buttonContainer">
+                                <button id="country2Search">search</button>
+                                <button id="country2Random">random</button>
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+
+                <div class="rowBlock firstTextRow">
+                    <div class="defaultGroup1 leftItem" >
+                        <p>Search for a country to learn all about it!</p>                                
+                    </div>
+                    <div class="errorGroup1 leftItem" hidden>
+                        <p>Sorry, we couldn't find anything matching that. Check for spelling errors.</p> 
+                    </div>
+                    <div class="country1SelectedGroup leftItem" hidden>
+                        <p>Or as it's called over there, <span id="country1LocalName">LOCAL_NAME</span>.</p>
+                        <p id="country1CapitalExists"><span id="country1SingleCapital">Its capital is</span><span id="country1MultiCapital" hidden>Its capitals include</span> <span id="country1Capital">CAPITAL1</span>.</p>
+                        <p id="country1NoCapital" hidden>It has no capital.</p>
+                        <br>
+                    </div>
+
+                    <div class="defaultGroup2 rightItem" >
+                        <p>Search for a country to learn all about it!</p>
+                    </div>
+                    <div class="errorGroup2 rightItem" hidden>
+                        <p>Sorry, we couldn't find anything matching that. Check for spelling errors.</p>    
+                    </div>
+                    <div class="country2SelectedGroup rightItem" hidden>
+                        <p>Or as it's called over there, <span id="country2LocalName">LOCAL_NAME2</span>.</p> 
+                        <p id="country2CapitalExists"><span id="country2SingleCapital">Its capital is</span><span id="country2MultiCapital" hidden>Its capitals include</span> <span id="country2Capital">CAPITAL2</span>.</p>
+                        <p id="country2NoCapital" hidden>It has no capital.</p>
+                        <br>
+                    </div>
+                </div>    
+                
+                <div class="rowBlock">
+                    <div class="country1SelectedGroup leftItem" hidden>
+                        <p>It's located in the <span id="country1Subregion">SUBREGION1</span> region and is <span id="country1Size">SIZE1</span> square kilometers. <span class="bothSelectedGroup" hidden>That makes it <span id="country1SizeRatio">SIZE1/SIZE2</span> times the size of <span id="country1Country2Reference">COUNTRY2</span>!</span></p>
+                        <br>
+                    </div>
+                    <div class="country2SelectedGroup rightItem" hidden>
+                        <p>It's located in the <span id="country2Subregion">SUBREGION2</span> region and is <span id="country2Size">SIZE2</span> square kilometers.</p>
+                        <br>
+                    </div>  
+                </div>
+
+                <div class="rowBlock">
+                    <div class="country1SelectedGroup leftItem" hidden>
+                        <p id="country1CurrencyExists">The Local currency is <span id="country1Currency">CUR1</span>.</p>
+                        <p id="country1NoCurrency" hidden>It has no Local currency.</p>
+                        <br>
+                    </div>
+                    <div class="country2SelectedGroup rightItem" hidden>
+                        <p id="country2CurrencyExists">The Local currency is <span id="country2Currency">CUR2</span>.</p>
+                        <p id="country2NoCurrency" hidden>It has no Local currency.</p>
+                        <br>
+                    </div>
+                </div>
+                
+                <div class="rowBlock">
+                    <div class="bothSelectedGroup centeredItem" id="bothSelectedCurrencyBox" hidden>
+                        <p id="exchangeRateSuccess">1 <span id="country1Currency2">CUR1</span> is about <span id="country2CurrencyAmount">X</span> <span id="country2Currency2">CUR2</span></p>
+                        <p id="exchangeRateFail" hidden>Couldn't fetch exchange rates</p>
+                        <p id="NoExchangeRate" hidden>No exchange rate is available</p>
+                        <br>
+                    </div>
+
+                    <div class="bothSelectedGroup centeredItem" id="currencyConverterLoader" hidden>
+                        <img class="currencyLoader" src="img/loading.gif" alt="loading icon"/>
+                    </div>
+                </div>          
+
+                <div class="rowBlock">
+                    <div class="country1SelectedGroup leftItem" hidden>
+                        <p>The population is about <span id="country1Population">POP1</span>.</p>
+                        <br>
+                    </div>
+                    <div class="country2SelectedGroup rightItem" hidden>
+                        <p>The population is about <span id="country2Population">POP2</span>.</p>
+                        <br>
+                    </div>
+                </div>
+                
+                <div class="rowBlock">
+                    <div class="bothSelectedGroup centeredItem" hidden>
+                        <p>So for each <span id="country1Demonym">DEMONYM1</span> person, there are about <span id="country2PopulationRatio">POP2/POP1</span> <span id="country2Demonym">DEMONYM2</span> people.</p>
+                        <br>
+                    </div>
+                </div>
+
+                <div class="rowBlock">
+                    <div class="country1SelectedGroup leftItem " hidden>
+                        <a class="countryLink" href="#" target="_blank" id="country1WikiLink">More about <span id="country1LinkName">COUNTRY1</span></a>
+                    </div>
+                    <div class="country2SelectedGroup rightItem" hidden>
+                        <a class="countryLink" href="#" target="_blank" id="country2WikiLink">More about <span id="country2LinkName">COUNTRY2</span></a>
+                    </div>
+                </div>        
+            </div>
+        </div>
+
+        <footer>  
+            <div>
+                <a href="about.html">About</a>
+                <a href="faq.html">FAQ</a>
+            </div>        
+            
+            <div>
+                <a href="https://loading.io/icon/" target="_blank">Loading icon from loading.io</a>
+                <a href="http://www.freepik.com" target="_blank">Background designed by macrovector / Freepik</a>
+                <a href="http://www.freepik.com" target="_blank">Earth designed by Freepik</a>
+            </div>
+        </footer>
+        
+        <script src="js/getCurrencyConversion.js"></script>
+        <script src="js/textFormatting.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/urlParser.js"></script>
+    </body>
+</html>
