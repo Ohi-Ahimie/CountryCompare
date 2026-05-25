@@ -19,8 +19,9 @@ let country2 = {
 
 const languageHints = {
     "South America": ["spa"],
-    "Africa": ["fra", "ara", "eng"],
-    "Asia": ["heb"]
+    "Africa": ["fra", "ara", "mey", "eng"],
+    "Asia": ["heb", "ara", "pus", "tuk", "uzb"],
+    "Europe": ["nob", "nld", "gsw"]
 }
 
 let allCountriesNames = null;
@@ -42,7 +43,7 @@ function getCountry(countryRecord, searchTerm){
     })
     .then(data => {
         countryRecord.data = data && chooseCountryFromData(searchTerm, data);
-        console.log(countryRecord);
+        // console.log(countryRecord);
 
         setCountryDisplayData(countryRecord);
         handleBothCountriesSet();
@@ -201,6 +202,15 @@ function getLocalName(countryData){
 
     if(countryData["languages"]){
         const languages = Object.keys(countryData["languages"]);
+        languages.sort((a, b)=>{
+            if (a !== "eng" && b !== "eng"){
+                return 0;
+            }else if (a === "eng"){
+                return 1;
+            }
+            return -1;
+        });
+        
         for (const lang of languages){
             if (countryData["name"]["nativeName"][lang]){
                 return countryData["name"]["nativeName"][lang]["common"];
