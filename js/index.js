@@ -33,7 +33,8 @@ function countryFieldOnKey(event, countryRecord){
     }
 }
 
-function getCountry(countryRecord, searchTerm){
+function getCountry(countryRecord, rawSearchTerm){
+    const searchTerm = handleSearchTerm(rawSearchTerm);
     fetch(`https://restcountries.com/v3.1/name/${searchTerm}`)
     .then(response => {
         if (response.ok){
@@ -300,4 +301,20 @@ function getMultiCapitalString(capitalArr){
 
     capitalStr += `and ${capitalArr[capitalArr.length-1]}`;
     return capitalStr;
+}
+
+function handleSearchTerm(rawSearchTerm){
+    if(rawSearchTerm.localeCompare("Korea", undefined, {sensitivity: 'accent'}) === 0){
+        return "South Korea";
+    }
+
+    const ukList = ["Wales", "Welsh", "Scotland", "Scots", "North Ireland", "Northern Ireland"];
+
+    for (term of ukList){
+        if(rawSearchTerm.localeCompare(term, undefined, {sensitivity: 'accent'}) === 0){
+            return "United Kingdom";
+        }
+    }
+
+    return rawSearchTerm;
 }
