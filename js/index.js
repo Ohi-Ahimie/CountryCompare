@@ -308,7 +308,7 @@ function handleSearchTerm(rawSearchTerm){
         return "South Korea";
     }
 
-    const ukList = ["Wales", "Welsh", "Scotland", "Scots", "North Ireland", "Northern Ireland"];
+    const ukList = ["Wales", "Welsh", "Scotland", "Scots", "North Ireland", "Northern Ireland", "England", "English"];
 
     for (term of ukList){
         if(rawSearchTerm.localeCompare(term, undefined, {sensitivity: 'accent'}) === 0){
