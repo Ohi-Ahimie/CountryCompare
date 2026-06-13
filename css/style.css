@@ -45,6 +45,11 @@ header div{
     padding-right: 5px;
 }
 
+.titleBox a{
+    text-decoration: none;
+    color: black;
+}
+
 .creditCaption{
     height: fit-content;
     width: fit-content;

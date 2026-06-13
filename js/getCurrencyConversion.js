@@ -1,6 +1,9 @@
 let exchangeRate = null;
 let reciprocal = null;
 
+// just meant to stop scrapers and low effort key grabbers for sake of portfolio project
+const CURRENCY_KEY = "ZTE3ODA5Y2U3M2Q2NTBlY2I4ZjZjODMw";
+
 function getCurrencyConversion(cur1, cur2, flip=false){
     if (cur1 === "N/A" || cur2 === "N/A"){
         document.getElementById("exchangeRateSuccess").hidden = true;
@@ -28,20 +31,15 @@ function getCurrencyConversion(cur1, cur2, flip=false){
             document.getElementById("currencyConverterLoader").hidden = true;
         }
     }else{
-        fetch("https://currency-exchange.p.rapidapi.com/exchange?q=1.0&from="+cur1+"&to="+cur2, {
-            "method": "GET",
-            "headers": {
-                "x-rapidapi-host": "currency-exchange.p.rapidapi.com",
-                "x-rapidapi-key": "c4bec9a586msh594844373a990ccp14249ejsnf7b1c11c0768"
-            }
-        })
+        fetch(`https://v6.exchangerate-api.com/v6/${window.atob(CURRENCY_KEY)}/pair/${cur1}/${cur2}`)
         .then(response => {
             if (response.ok){
                 return response.json();
             }
             return null;
         })
-        .then(function(data) {
+        .then(function(rawData) {
+            const data = rawData["conversion_rate"]
             if (data){
                 exchangeRate = data;
                 if (data != 0){
