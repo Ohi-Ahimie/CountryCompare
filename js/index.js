@@ -13,11 +13,13 @@ const COUNTRIES_KEY = "cmNfbGl2ZV84NDAxMzFiZDBkOTg0Yjk2OGUwMTM3MDI4NWY4MTk2Yg=="
 let country1 = {
     entry: 1,
     data: null,
+    isLoading: false,
 };
 
 let country2 = {
     entry: 2,
     data: null,
+    isLoading: false,
 };
 
 const languageHints = {
@@ -29,6 +31,8 @@ const languageHints = {
 
 let allCountriesNames = null;
 
+const minSpamThreshold = 800;
+
 function countryFieldOnKey(event, countryRecord){
     if (event.keyCode == 13) {  // enter
         document.activeElement.blur();
@@ -37,22 +41,29 @@ function countryFieldOnKey(event, countryRecord){
 }
 
 function getCountry(countryRecord, rawSearchTerm){
-    const searchTerm = handleSearchTerm(rawSearchTerm);
-    fetch(
-        `https://api.restcountries.com/countries/v5?q=${searchTerm}&limit=100`,
-        { headers: { 'Authorization': `Bearer ${window.atob(COUNTRIES_KEY)}` } }
-    )
-    .then(response => {
-        if (response.ok){
-            return response.json();
-        }
-        return null;
-    })
-    .then(rawData => {
-        setCountryRecordFromData(countryRecord, searchTerm, rawData);
-    }).catch(err => {
-        console.log(err);
-    });
+    if (!countryRecord.isLoading){
+        const searchTerm = handleSearchTerm(rawSearchTerm);
+        countryRecord.isLoading = true;
+
+        fetch(
+            `https://api.restcountries.com/countries/v5?q=${searchTerm}&limit=100`,
+            { headers: { 'Authorization': `Bearer ${window.atob(COUNTRIES_KEY)}` } }
+        )
+        .then(response => {
+            setTimeout(()=>{countryRecord.isLoading = false;}, minSpamThreshold);
+            if (response.ok){
+                return response.json();
+            }
+            return null;
+        })
+        .then(rawData => {
+            setCountryRecordFromData(countryRecord, searchTerm, rawData);
+        }).catch(err => {
+            setTimeout(()=>{countryRecord.isLoading = false;}, minSpamThreshold);
+            console.log(err);
+        });
+    }
+    
 }
 
 function setCountryRecordFromData(countryRecord, searchTerm, rawData){
@@ -248,25 +259,30 @@ function flipCountries(){
 }
 
 function getRandomCountry(countryRecord){
-    const sizeSet = 254;
-    const index = parseInt(Math.random() * sizeSet);
+    if(!countryRecord.isLoading){
+        const sizeSet = 254;
+        const index = parseInt(Math.random() * sizeSet);
+        countryRecord.isLoading = true;
 
-    fetch(
-        `https://api.restcountries.com/countries/v5?limit=1&offset=${index}`,
-        { headers: { 'Authorization': `Bearer ${window.atob(COUNTRIES_KEY)}` } }
-    )
-    .then(response => {
-        if (response.ok){
-            return response.json();
-        }
-        return null;
-    })
-    .then(rawData => {
-        setCountryRecordFromData(countryRecord, null, rawData);
-        document.getElementById(`country${countryRecord.entry}Field`).value = countryRecord.data["names"]["common"];
-    }).catch(err => {
-        console.log(err);
-    });
+        fetch(
+            `https://api.restcountries.com/countries/v5?limit=1&offset=${index}`,
+            { headers: { 'Authorization': `Bearer ${window.atob(COUNTRIES_KEY)}` } }
+        )
+        .then(response => {
+            setTimeout(()=>{countryRecord.isLoading = false;}, minSpamThreshold);
+            if (response.ok){
+                return response.json();
+            }
+            return null;
+        })
+        .then(rawData => {
+            setCountryRecordFromData(countryRecord, null, rawData);
+            document.getElementById(`country${countryRecord.entry}Field`).value = countryRecord.data["names"]["common"];
+        }).catch(err => {
+            setTimeout(()=>{countryRecord.isLoading = false;}, minSpamThreshold);
+            console.log(err);
+        });
+    }
 }
 
 function copyShareLink(){
